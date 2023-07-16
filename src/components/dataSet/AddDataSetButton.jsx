@@ -1,5 +1,6 @@
 import React from "react";
 import { Add as AddIcon } from "@mui/icons-material";
+import useStore from "../../../store/store";
 
 const styles = {
   button: (theme) => ({
@@ -24,9 +25,9 @@ const styles = {
   },
 };
 
-const AddDataSetButton = ({ title }) => {
+const AddDataSetButton = ({ title, handleClick }) => {
   return (
-    <div css={styles.button}>
+    <div css={styles.button} onClick={handleClick}>
       <div css={styles.textWrapper}>{title}</div>
       <div css={styles.iconWrapper}>
         <AddIcon />
