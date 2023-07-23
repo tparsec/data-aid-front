@@ -1,4 +1,6 @@
-export default {
+import { createTheme } from "@mui/material";
+
+export default createTheme({
   color: {
     dark: "#22272C",
     darker: "#1e2227",
@@ -8,4 +10,4 @@ export default {
     blue: "#0c4767",
     lighterBlue: "#4d7c8a",
   },
-};
+});

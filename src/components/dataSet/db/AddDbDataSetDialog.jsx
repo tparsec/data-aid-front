@@ -1,26 +1,32 @@
-import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
+import {
+  Button,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
 import { useAtom } from "jotai";
-import React from "react";
 import dialogAtom from "../../../atoms/dialogAtom";
 import { ADD_DB_DATA_SET } from "../../../constants/dialogs";
 import { DB_CONNECTION } from "../../../constants/dataSets";
 import useStore from "../../../../store/store";
+import TextField from "../../shared/form/TextField";
+import Form from "../../shared/form/Form";
+import Dialog from "../../shared/dialog/Dialog";
+import FormDialog from "../../shared/dialog/FormDialog";
 
 const AddDbDataSetDialog = () => {
   const [dialogState, setDialogState] = useAtom(dialogAtom);
   const addDataSet = useStore((s) => s.dataSet.add);
-  console.log(dialogState.type === ADD_DB_DATA_SET);
   return (
-    <Dialog
+    <FormDialog
       onClose={() => setDialogState(null)}
-      open={dialogState.type === ADD_DB_DATA_SET}
+      open={dialogState?.type === ADD_DB_DATA_SET}
+      title="Setup database connection"
+      onConfirm={(vals) => addDataSet(DB_CONNECTION, vals)}
     >
-      <DialogTitle>Setup database connection</DialogTitle>
-      <DialogActions>
-        <Button onClick={() => setDialogState(null)}>Cancel</Button>
-        <Button onClick={() => addDataSet(DB_CONNECTION)}>Connect</Button>
-      </DialogActions>
-    </Dialog>
+      <TextField name="name" />
+      <TextField name="dbConnectionSource.connectionString" />
+    </FormDialog>
   );
 };
 
