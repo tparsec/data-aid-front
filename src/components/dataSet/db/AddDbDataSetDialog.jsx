@@ -24,8 +24,11 @@ const AddDbDataSetDialog = () => {
       title="Setup database connection"
       onConfirm={(vals) => addDataSet(DB_CONNECTION, vals)}
     >
-      <TextField name="name" />
-      <TextField name="dbConnectionSource.connectionString" />
+      <TextField name="name" label="Name" />
+      <TextField name="dbConnectionSource.server" label="Server" />
+      <TextField name="dbConnectionSource.databaseName" label="Database" />
+      <TextField name="dbConnectionSource.username" label="Username" />
+      <TextField name="dbConnectionSource.password" label="Password" />
     </FormDialog>
   );
 };
